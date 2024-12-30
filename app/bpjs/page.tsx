@@ -84,7 +84,7 @@ export default function Home() {
         {/* Header */}
         <header className="bg-white shadow px-10 py-4 flex justify-between items-center">
           <h2 className="text-lg font-semibold text-gray-800">
-            PLN
+            BPJS
           </h2>
         </header>
 
@@ -151,86 +151,52 @@ export default function Home() {
                 <table className="table-auto w-full text-left border-collapse">
                   <thead className="bg-gray-100">
                     <tr>
-                      <th className="px-6 py-3 ">Status</th>
-                      <th className="px-6 py-3 ">ID Pelanggan</th>
-                      <th className="px-6 py-3 ">Nama Pelanggan</th>
-                      <th className="px-6 py-3 ">Lembar Tagihan</th>
-                      <th className="px-6 py-3 ">Nominal Tagihan</th>
-                      <th className="px-6 py-3 ">Biaya Admin</th>
-                      <th className="px-6 py-3 ">Total Tagihan</th>
-                      <th className="px-6 py-3 ">Keterangan</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      {
-                        status: "Gagal",
-                        id: "123456789",
-                        nama: "John Doe",
-                        lembar: 1,
-                        nominal: "Rp100.000",
-                        admin: "Rp2.000",
-                        total: "Rp102.000",
-                        keterangan: "Transaksi gagal",
-                      },
-                      {
-                        status: "Sukses",
-                        id: "987654321",
-                        nama: "Jane Smith",
-                        lembar: 1,
-                        nominal: "Rp150.000",
-                        admin: "Rp3.000",
-                        total: "Rp153.000",
-                        keterangan: "Transaksi sukses",
-                      },
-                      {
-                        status: "Sukses",
-                        id: "987654321",
-                        nama: "Jane Smith",
-                        lembar: 1,
-                        nominal: "Rp150.000",
-                        admin: "Rp3.000",
-                        total: "Rp153.000",
-                        keterangan: "Transaksi sukses",
-                      },
-                    
-                      
-                    ].map((item, index) => (
-                      <tr
-                        key={index}
-                        className={`hover:bg-gray-50 ${
-                          item.status === "Gagal"
-                            ? "bg-red-100"
-                            : item.status === "Sukses"
-                            ? "bg-green-100"
-                            : ""
-                        }`}
-                      >
-                        <td className="px-6 py-4">
-                          <span
-                            className={`px-3 py-1 rounded-full text-sm ${
-                              item.status === "Gagal"
-                                ? "bg-red-100 text-red-600"
-                                : item.status === "Sukses"
-                                ? "bg-green-100 text-green-600"
-                                : ""
-                            }`}
-                          >
-                            {item.status}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4">{item.id}</td>
-                        <td className="px-6 py-4">{item.nama}</td>
-                        <td className="px-6 py-4">{item.lembar}</td>
-                        <td className="px-6 py-4">{item.nominal}</td>
-                        <td className="px-6 py-4">{item.admin}</td>
-                        <td className="px-6 py-4">{item.total}</td>
-                        <td className="px-6 py-4">{item.keterangan}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+        <th className="px-6 py-3">Status Transaksi</th>
+        <th className="px-6 py-3">Nomor Kartu</th>
+        <th className="px-6 py-3">Nama Pelanggan</th>
+        <th className="px-6 py-3">Periode</th>
+        <th className="px-6 py-3">Nominal Tagihan</th>
+        <th className="px-6 py-3">Biaya Admin</th>
+        <th className="px-6 py-3">Total Tagihan</th>
+        <th className="px-6 py-3">Waktu Transaksi</th>
+        <th className="px-6 py-3">Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        {
+          status: "Sukses",
+          nomorKartu: "123456789",
+          nama: "John Doe",
+          periode: "2024/01",
+          nominal: "100.000",
+          admin: "2.000",
+          total: "102.000",
+          waktu: "10:00",
+          keterangan: "Pembayaran berhasil",
+        },
+      ].map((item, index) => (
+        <tr
+          key={index}
+          className={`hover:bg-gray-100 ${
+            item.status === "Sukses" ? "bg-blue-100" : "bg-red-100"
+          }`}
+        >
+          <td className="px-6 py-4 text-green-600 font-bold">{item.status}</td>
+          <td className="px-6 py-4">{item.nomorKartu}</td>
+          <td className="px-6 py-4">{item.nama}</td>
+          <td className="px-6 py-4">{item.periode}</td>
+          <td className="px-6 py-4">{item.nominal}</td>
+          <td className="px-6 py-4">{item.admin}</td>
+          <td className="px-6 py-4">{item.total}</td>
+          <td className="px-6 py-4">{item.waktu}</td>
+          <td className="px-6 py-4">{item.keterangan}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
             </div>
           )}
 

@@ -84,7 +84,7 @@ export default function Home() {
         {/* Header */}
         <header className="bg-white shadow px-10 py-4 flex justify-between items-center">
           <h2 className="text-lg font-semibold text-gray-800">
-            PLN
+            Pulsa
           </h2>
         </header>
 
@@ -151,14 +151,14 @@ export default function Home() {
                 <table className="table-auto w-full text-left border-collapse">
                   <thead className="bg-gray-100">
                     <tr>
-                      <th className="px-6 py-3 ">Status</th>
-                      <th className="px-6 py-3 ">ID Pelanggan</th>
-                      <th className="px-6 py-3 ">Nama Pelanggan</th>
-                      <th className="px-6 py-3 ">Lembar Tagihan</th>
-                      <th className="px-6 py-3 ">Nominal Tagihan</th>
-                      <th className="px-6 py-3 ">Biaya Admin</th>
-                      <th className="px-6 py-3 ">Total Tagihan</th>
-                      <th className="px-6 py-3 ">Keterangan</th>
+                      <th className="px-6 py-3 text-gray-700">Status</th>
+                      <th className="px-6 py-3 text-gray-700">ID Pelanggan</th>
+                      <th className="px-6 py-3 text-gray-700">Nama Pelanggan</th>
+                      <th className="px-6 py-3 text-gray-700">Lembar Tagihan</th>
+                      <th className="px-6 py-3 text-gray-700">Nominal Tagihan</th>
+                      <th className="px-6 py-3 text-gray-700">Biaya Admin</th>
+                      <th className="px-6 py-3 text-gray-700">Total Tagihan</th>
+                      <th className="px-6 py-3 text-gray-700">Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
