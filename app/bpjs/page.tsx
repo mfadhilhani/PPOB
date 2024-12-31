@@ -8,77 +8,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex flex-col md:flex-row">
-      {/* Sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-10 w-16 flex flex-col border-r bg-white">
-  <nav className="flex flex-col items-center gap-6 py-6">
-    {/* Sidebar Menu */}
-    {[
-      {
-        href: "/",
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            {/* Icon for PLN */}
-            <path d="M13 2L3 14h7v8l10-12h-7V2z" />
-          </svg>
-        ),
-        srText: "PLN",
-      },
-      {
-        href: "pulsa",
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            {/* Icon for Pulsa */}
-            <path d="M7 2h10a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm5 18a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-          </svg>
-        ),
-        srText: "Pulsa",
-      },
-      {
-        href: "bpjs",
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            {/* Icon for BPJS */}
-            <path d="M4 6h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
-  <path d="M4 10h16" />
-          </svg>
-        ),
-        srText: "BPJS",
-      },
-    ].map((item, idx) => (
-      <a
-        key={idx}
-        href={item.href}
-        className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-600 hover:text-blue-600"
-      >
-        {item.icon}
-        <span className="sr-only">{item.srText}</span>
-      </a>
-    ))}
-  </nav>
-</aside>
-
-
+      
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto  md:ml-16 md:mt-0">
         {/* Header */}
