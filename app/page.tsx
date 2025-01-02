@@ -125,6 +125,26 @@ export default function Home() {
                         total: "Rp153.000",
                         keterangan: "Transaksi sukses",
                       },
+                      {
+                        status: "Sukses",
+                        id: "987654321",
+                        nama: "Jane Smith",
+                        lembar: 1,
+                        nominal: "Rp150.000",
+                        admin: "Rp3.000",
+                        total: "Rp153.000",
+                        keterangan: "Transaksi sukses",
+                      },
+                      {
+                        status: "Sukses",
+                        id: "987654321",
+                        nama: "Jane Smith",
+                        lembar: 1,
+                        nominal: "Rp150.000",
+                        admin: "Rp3.000",
+                        total: "Rp153.000",
+                        keterangan: "Transaksi sukses",
+                      },
                     
                       
                     ].map((item, index) => (

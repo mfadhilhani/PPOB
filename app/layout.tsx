@@ -126,25 +126,32 @@ export default function RootLayout({
                 label: "BPJS",
               },
             ].map((item, idx) => (
-              <a
-                key={idx}
-                href={item.href}
-                className="flex items-center gap-4 px-4 text-gray-600 hover:text-blue-600"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg">
-                  {item.icon}
-                </div>
-                {/* Tampilkan label hanya jika sidebar dalam mode expanded */}
-                {isExpanded && (
-                  <span className="text-sm font-medium">{item.label}</span>
+              <div key={idx} className="relative group">
+                <a
+                  href={item.href}
+                  className="flex items-center gap-4 px-4 text-gray-600 hover:text-blue-600"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg">
+                    {item.icon}
+                  </div>
+                  {/* Tampilkan label hanya jika sidebar dalam mode expanded */}
+                  {isExpanded && (
+                    <span className="text-sm font-medium">{item.label}</span>
+                  )}
+                </a>
+                {/* Tooltip */}
+                {!isExpanded && (
+                  <div className="absolute left-14 top-1/2 -translate-y-1/2 hidden group-hover:block bg-gray-700 text-white text-xs font-medium rounded-lg px-2 py-1 shadow-lg">
+                    {item.label}
+                  </div>
                 )}
-              </a>
+              </div>
             ))}
           </nav>
         </aside>
 
         {/* Konten halaman */}
-        <main className={`ml-${isExpanded ? "64" : "16"} transition-all`}>
+        <main className={`ml-${isExpanded ? "56" : "16"} transition-all`}>
           {children}
         </main>
       </body>
