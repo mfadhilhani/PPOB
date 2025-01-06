@@ -44,7 +44,7 @@ export function ProductsTable({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Products</CardTitle>
+        <CardTitle>PLN</CardTitle>
         <CardDescription>
           Manage your products and view their sales performance.
         </CardDescription>
@@ -53,19 +53,16 @@ export function ProductsTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="hidden w-[100px] sm:table-cell">
-                <span className="sr-only">Image</span>
-              </TableHead>
-              <TableHead>Name</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="hidden md:table-cell">Price</TableHead>
+              <TableHead>ID Pelanggan</TableHead>
+              <TableHead className="hidden md:table-cell">Nama Pelanggan</TableHead>
               <TableHead className="hidden md:table-cell">
-                Total Sales
+                Lembar Tagihan
               </TableHead>
-              <TableHead className="hidden md:table-cell">Created at</TableHead>
-              <TableHead>
-                <span className="sr-only">Actions</span>
-              </TableHead>
+              <TableHead className="hidden md:table-cell">Nominal Tagihan</TableHead>
+              <TableHead className="hidden md:table-cell">Biaya Admin</TableHead>
+              <TableHead className="hidden md:table-cell">Total Tagihan</TableHead>
+              <TableHead className="hidden md:table-cell">Keterangan</TableHead>              
             </TableRow>
           </TableHeader>
           <TableBody>
