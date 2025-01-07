@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,33 +9,28 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { SelectProduct } from '@/lib/db';
+import { SelectPLNBills } from '@/lib/dbpln';
 import { deleteProduct } from './actions';
 
-export function Product({ product }: { product: SelectProduct }) {
+export function Product({ product }: { product: SelectPLNBills }) {
   return (
-    <TableRow>
-      <TableCell className="hidden sm:table-cell">
-        <Image
-          alt="Product image"
-          className="aspect-square rounded-md object-cover"
-          height="64"
-          src={product.imageUrl}
-          width="64"
-        />
-      </TableCell>
-      <TableCell className="font-medium">{product.name}</TableCell>
+    <TableRow>      
       <TableCell>
-        <Badge variant="outline" className="capitalize">
+        <Badge variant={
+          product.status === 'active' ? 'default' :
+          product.status === 'inactive' ? 'secondary' : 'outline'
+        }>
           {product.status}
         </Badge>
       </TableCell>
-      <TableCell className="hidden md:table-cell">{`$${product.price}`}</TableCell>
-      <TableCell className="hidden md:table-cell">{product.stock}</TableCell>
-      <TableCell className="hidden md:table-cell">
-        {product.availableAt.toLocaleDateString("en-US")}
-      </TableCell>
-      <TableCell>
+      <TableCell>{product.customerId}</TableCell>
+      <TableCell>{product.customerName}</TableCell>
+      <TableCell>{product.billSheets}</TableCell>
+      <TableCell>{product.billAmount}</TableCell>
+      <TableCell>{product.adminFee}</TableCell>
+      <TableCell>{product.totalBill}</TableCell>
+      <TableCell>{product.description}</TableCell>
+      <TableCell className="text-right">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button aria-haspopup="true" size="icon" variant="ghost">

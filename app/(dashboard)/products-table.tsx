@@ -1,5 +1,7 @@
 'use client';
 
+
+import { useState, useEffect  } from 'react';
 import {
   TableHead,
   TableRow,
@@ -16,33 +18,43 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Product } from './product';
-import { SelectProduct } from '@/lib/db';
+import { SelectPLNBills  } from '@/lib/dbpln';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-export function ProductsTable({
-  products,
-  offset,
-  totalProducts
-}: {
-  products: SelectProduct[];
-  offset: number;
-  totalProducts: number;
-}) {
-  let router = useRouter();
-  let productsPerPage = 5;
+export function ProductsTable({ products }: { products: SelectPLNBills[] }) {
 
-  function prevPage() {
-    router.back();
-  }
+ const productsPerPage = 5; // Jumlah data per halaman
+  const [offset, setOffset] = useState(0); // Offset untuk pagination
 
-  function nextPage() {
-    router.push(`/?offset=${offset}`, { scroll: false });
-  }
+  // Data untuk halaman saat ini
+  const currentProducts = products.slice(offset, offset + productsPerPage);
+
+  const totalProducts = products.length; // Total data
+
+  useEffect(() => {
+    console.log('Offset Updated:', offset);
+    console.log('Current Products:', currentProducts);
+  }, [offset, currentProducts]);
+
+  const nextPage = () => {
+    console.log('Next button clicked');
+    if (offset + productsPerPage < totalProducts) {
+      setOffset(offset + productsPerPage);
+    }
+  };
+
+  const prevPage = () => {
+    console.log('Prev button clicked');
+    if (offset - productsPerPage >= 0) {
+      setOffset(offset - productsPerPage);
+    }
+  };
+
 
   return (
-    <Card>
+<Card>
       <CardHeader>
         <CardTitle>PLN</CardTitle>
         <CardDescription>
@@ -53,57 +65,54 @@ export function ProductsTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Status</TableHead>
-              <TableHead>ID Pelanggan</TableHead>
-              <TableHead className="hidden md:table-cell">Nama Pelanggan</TableHead>
-              <TableHead className="hidden md:table-cell">
-                Lembar Tagihan
-              </TableHead>
-              <TableHead className="hidden md:table-cell">Nominal Tagihan</TableHead>
-              <TableHead className="hidden md:table-cell">Biaya Admin</TableHead>
-              <TableHead className="hidden md:table-cell">Total Tagihan</TableHead>
-              <TableHead className="hidden md:table-cell">Keterangan</TableHead>              
-            </TableRow>
+           <TableHead className="text-center font-semibold">Status</TableHead>
+           <TableHead className="text-center font-semibold">ID Pelanggan</TableHead>
+           <TableHead className="text-center font-semibold">Nama Pelanggan</TableHead>
+           <TableHead className="text-center font-semibold">Lembar Tagihan</TableHead>
+           <TableHead className="text-center font-semibold">Nominal Tagihan</TableHead>
+           <TableHead className="text-center font-semibold">Biaya Admin</TableHead>
+           <TableHead className="text-center font-semibold">Total Tagihan</TableHead>
+           <TableHead className="text-center font-semibold">Keterangan</TableHead>
+           <TableHead className="text-center font-semibold">Aksi</TableHead>
+         </TableRow>
           </TableHeader>
           <TableBody>
             {products.map((product) => (
-              <Product key={product.id} product={product} />
+              <Product key={product.customerId} product={product} />
             ))}
           </TableBody>
         </Table>
       </CardContent>
       <CardFooter>
-        <form className="flex items-center w-full justify-between">
+        <div className="flex items-center justify-between w-full">
           <div className="text-xs text-muted-foreground">
             Showing{' '}
             <strong>
-              {Math.max(0, Math.min(offset - productsPerPage, totalProducts) + 1)}-{offset}
+              {offset + 1}-{Math.min(offset + productsPerPage, totalProducts)}
             </strong>{' '}
             of <strong>{totalProducts}</strong> products
           </div>
           <div className="flex">
             <Button
-              formAction={prevPage}
+              onClick={prevPage}
               variant="ghost"
               size="sm"
-              type="submit"
-              disabled={offset === productsPerPage}
+              disabled={offset === 0}
             >
               <ChevronLeft className="mr-2 h-4 w-4" />
               Prev
             </Button>
             <Button
-              formAction={nextPage}
+              onClick={nextPage}
               variant="ghost"
               size="sm"
-              type="submit"
-              disabled={offset + productsPerPage > totalProducts}
+              disabled={offset + productsPerPage >= totalProducts}
             >
               Next
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
-        </form>
+        </div>
       </CardFooter>
     </Card>
   );
