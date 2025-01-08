@@ -75,11 +75,11 @@ function DesktopNav() {
           <Zap className="h-5 w-5" />
         </NavItem>
         
-        <NavItem href="#" label="Pulsa">
+        <NavItem href="/Pulsa" label="Pulsa">
           <Package className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/customers" label="BPJS">
+        <NavItem href="/BPJS" label="BPJS">
           <Users2 className="h-5 w-5" />
         </NavItem>
 
@@ -126,36 +126,24 @@ function MobileNav() {
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Home className="h-5 w-5" />
-            Dashboard
+            PLN
           </Link>
           <Link
             href="#"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <ShoppingCart className="h-5 w-5" />
-            Orders
-          </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Products
+            Pulsa
           </Link>
           <Link
             href="#"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <Users2 className="h-5 w-5" />
-            Customers
+            <ShoppingCart className="h-5 w-5" />
+            BPJS
           </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <LineChart className="h-5 w-5" />
-            Settings
-          </Link>
+          
+          
         </nav>
       </SheetContent>
     </Sheet>
@@ -167,20 +155,39 @@ function DashboardBreadcrumb() {
     <Breadcrumb className="hidden md:flex">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="#">Dashboard</Link>
-          </BreadcrumbLink>
+          <input
+              type="text"
+              placeholder="PLN/Pulsa/BPJS"
+              className="flex-grow w-full md:w-1/4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+            />
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href="#">Products</Link>
-          </BreadcrumbLink>
+          <input
+              type="text"
+              placeholder="No HP"
+              className="flex-grow w-full md:w-1/4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+            />
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>All Products</BreadcrumbPage>
+        <input
+              type="date"
+              className="flex-grow w-full md:w-1/6 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+            />
         </BreadcrumbItem>
+        <BreadcrumbItem>
+        <input
+              type="date"
+              className="flex-grow w-full md:w-1/6 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+            />
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+          <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            >
+              Filter
+            </button>
+          </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
   );

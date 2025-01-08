@@ -1,3 +1,4 @@
+// dbpln.ts
 import 'server-only';
 
 import { pgTable, text, numeric, integer, timestamp, pgEnum, serial } from 'drizzle-orm/pg-core';
@@ -18,13 +19,48 @@ export const plnBills = pgTable('pln_bills', {
 
 export type SelectPLNBills = typeof plnBills.$inferSelect;
 
-
+// Fungsi untuk mendapatkan data PLN bills
 export async function getPLNBills(search: string, offset: number) {
-  // Simulasi data dari database
-  const dummyBills = [   
+  const dummyBills = [
     {
       status: 'inactive' as const,
-      customerId: 78901,
+      customerId: 12345,
+      customerName: 'John Doe',
+      billSheets: 2,
+      billAmount: 'Rp 150.000',
+      adminFee: 'Rp 5.000',
+      totalBill: 'Rp 155.000',
+      description: 'Pembayaran bulan Oktober',
+      createdAt: new Date('2023-10-01'),
+    },
+    {
+      status: 'active' as const,
+      customerId: 67890,
+      customerName: 'Jane Smith',
+      billSheets: 3,
+      billAmount: 'Rp 225.000',
+      adminFee: 'Rp 2.500',
+      totalBill: 'Rp 227.500',
+      description: 'Pembayaran bulan November',
+      createdAt: new Date('2023-11-15'),
+    },
+  ];
+
+  return {
+    bills: dummyBills.filter((bill) =>
+      bill.customerName.toLowerCase().includes(search.toLowerCase())
+    ),
+    newOffset: offset + dummyBills.length,
+    totalBills: dummyBills.length,
+  };
+}
+
+// Fungsi untuk mendapatkan data receipts
+export async function getReceipts(search: string, offset: number) {
+  const dummyReceipts = [
+    {
+      status: 'active' as const,
+      customerId: 67890,
       customerName: 'Jane Smith',
       billSheets: 3,
       billAmount: 'Rp 225.000',
@@ -35,7 +71,7 @@ export async function getPLNBills(search: string, offset: number) {
     },
     {
       status: 'active' as const,
-      customerId: 78901,
+      customerId: 67890,
       customerName: 'Jane Smith',
       billSheets: 3,
       billAmount: 'Rp 225.000',
@@ -44,47 +80,13 @@ export async function getPLNBills(search: string, offset: number) {
       description: 'Pembayaran bulan November',
       createdAt: new Date('2023-11-15'),
     },
-    {
-      status: 'inactive' as const,
-      customerId: 78901,
-      customerName: 'Jane Smith',
-      billSheets: 3,
-      billAmount: 'Rp 225.000',
-      adminFee: 'Rp 2.500',
-      totalBill: 'Rp 227.500',
-      description: 'Pembayaran bulan November',
-      createdAt: new Date('2023-11-15'),
-    },
-    {
-      status: 'inactive' as const,
-      customerId: 78901,
-      customerName: 'Jane Smith',
-      billSheets: 3,
-      billAmount: 'Rp 225.000',
-      adminFee: 'Rp 2.500',
-      totalBill: 'Rp 227.500',
-      description: 'Pembayaran bulan November',
-      createdAt: new Date('2023-11-15'),
-    },
-   
-    {
-      status: 'archived' as const,
-      customerId: 78901,
-      customerName: 'Jane Smith',
-      billSheets: 3,
-      billAmount: 'Rp 225.000',
-      adminFee: 'Rp 2.500',
-      totalBill: 'Rp 227.500',
-      description: 'Pembayaran bulan November',
-      createdAt: new Date('2023-11-15'),
-    },
-    
-    
   ];
 
   return {
-    bills: dummyBills,
-    newOffset: offset + dummyBills.length,
-    totalBills: dummyBills.length,
+    receipts: dummyReceipts.filter((receipt) =>
+      receipt.customerName.toLowerCase().includes(search.toLowerCase())
+    ),
+    newOffset: offset + dummyReceipts.length,
+    totalReceipts: dummyReceipts.length,
   };
 }

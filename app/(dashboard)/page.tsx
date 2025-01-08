@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ProductsTable } from './products-table';
-import { getPLNBills, statusEnum } from '@/lib/dbpln';
+import { getPLNBills, getReceipts, statusEnum } from '@/lib/dbpln';
 
 export default async function ProductsPage(
   props: {
@@ -13,30 +13,44 @@ export default async function ProductsPage(
   const search = searchParams.q ?? '';
   const offset = searchParams.offset ?? 0;
 
-  // Ambil data PLN bills
-  const { bills, newOffset, totalBills } = await getPLNBills(search, Number(offset));
+  // Ambil data untuk Transaksi (PLN bills)
+  const { bills, newOffset: newOffsetBills, totalBills } = await getPLNBills(search, Number(offset));
 
-  // Transformasi data agar sesuai dengan tipe yang diharapkan oleh ProductsTable
+  // Ambil data untuk Struk Pembelian
+  const { receipts, newOffset: newOffsetReceipts, totalReceipts } = await getReceipts(search, Number(offset));
+
+  // Transformasi data PLN bills
   const transformedBills = bills.map((bill) => ({
-      status: bill.status as typeof statusEnum.enumValues[number],
-      customerId: Number(bill.customerId),
-      customerName: String(bill.customerName),
-      billSheets: Number(bill.billSheets),
-      billAmount: String(bill.billAmount),
-      adminFee: String(bill.adminFee),
-      totalBill: String(bill.totalBill),
-      description: bill.description || null,
-      createdAt: bill.createdAt ? new Date(bill.createdAt) : null,
+    status: bill.status as typeof statusEnum.enumValues[number],
+    customerId: Number(bill.customerId),
+    customerName: String(bill.customerName),
+    billSheets: Number(bill.billSheets),
+    billAmount: String(bill.billAmount),
+    adminFee: String(bill.adminFee),
+    totalBill: String(bill.totalBill),
+    description: bill.description || null,
+    createdAt: bill.createdAt ? new Date(bill.createdAt) : null,
   }));
 
-  
+  // Transformasi data Struk Pembelian
+  const transformedReceipts = receipts.map((receipt) => ({
+    status: receipt.status as typeof statusEnum.enumValues[number],
+    customerId: Number(receipt.customerId),
+    customerName: String(receipt.customerName),
+    billSheets: Number(receipt.billSheets),
+    billAmount: String(receipt.billAmount),
+    adminFee: String(receipt.adminFee),
+    totalBill: String(receipt.totalBill),
+    description: receipt.description || null,
+    createdAt: receipt.createdAt ? new Date(receipt.createdAt) : null,
+  }));
 
   return (
     <Tabs defaultValue="all">
       <div className="flex items-center">
         <TabsList>
           <TabsTrigger value="all">Transaksi</TabsTrigger>
-          <TabsTrigger value="active">Struk Pembelian</TabsTrigger>
+          <TabsTrigger value="receipts">Struk Pembelian</TabsTrigger>
         </TabsList>
         <div className="ml-auto flex items-center gap-2">
           <Button size="sm" variant="outline" className="h-8 gap-1">
@@ -54,9 +68,15 @@ export default async function ProductsPage(
         </div>
       </div>
 
+      {/* Tab untuk Transaksi */}
       <TabsContent value="all">
+        <ProductsTable products={transformedBills} />
+      </TabsContent>
+
+      {/* Tab untuk Struk Pembelian */}
+      <TabsContent value="receipts">
         <ProductsTable
-          products={transformedBills}  // Only pass the products prop
+          products={transformedReceipts}
         />
       </TabsContent>
     </Tabs>
