@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { ProductsTable } from './products-table';
+import { ProductsTable, ProductsTable2 } from './products-table';
 import { getPLNBills, getReceipts, statusEnum } from '@/lib/dbpln';
 
 export default async function ProductsPage(
@@ -35,15 +35,19 @@ export default async function ProductsPage(
   // Transformasi data Struk Pembelian
   const transformedReceipts = receipts.map((receipt) => ({
     status: receipt.status as typeof statusEnum.enumValues[number],
-    customerId: Number(receipt.customerId),
+    customerId: String(receipt.customerId),
     customerName: String(receipt.customerName),
     billSheets: Number(receipt.billSheets),
     billAmount: String(receipt.billAmount),
     adminFee: String(receipt.adminFee),
     totalBill: String(receipt.totalBill),
+    TotalTagihan: String(receipt.TotalTagihan),
+    WaktuTransaksi: String(receipt.WaktuTransaksi),
+    Keterang: String(receipt.Keterang),
     description: receipt.description || null,
     createdAt: receipt.createdAt ? new Date(receipt.createdAt) : null,
-  }));
+}));
+
 
   return (
     <Tabs defaultValue="all">
@@ -75,8 +79,8 @@ export default async function ProductsPage(
 
       {/* Tab untuk Struk Pembelian */}
       <TabsContent value="receipts">
-        <ProductsTable
-          products={transformedReceipts}
+        <ProductsTable2
+          products2={transformedReceipts} 
         />
       </TabsContent>
     </Tabs>
