@@ -2,6 +2,7 @@ import 'server-only';
 
 // Import Drizzle ORM
 import { pgTable, text, numeric, integer, timestamp, pgEnum, serial } from 'drizzle-orm/pg-core';
+import { number } from 'zod';
 
 // Enum untuk Status
 export const statusEnum = pgEnum('status', ['active', 'inactive', 'archived']);
@@ -27,11 +28,11 @@ export const receiptsTable = pgTable('receipts', {
   billAmount: numeric('bill_amount', { precision: 12, scale: 2 }).notNull(), // Nominal Tagihan
   adminFee: numeric('admin_fee', { precision: 12, scale: 2 }).notNull(), // Biaya Admin
   totalBill: numeric('total_bill', { precision: 12, scale: 2 }).notNull(), // Total Tagihan
+  BL_TH: numeric('BL_TH', { precision: 12, scale: 2 }).notNull(), // Total Tagihan
   status: statusEnum('status').notNull(), // Status
   description: text('description'), // Keterangan
   TotalTagihan: text('Total Tagihan').notNull(), // Total Tagihan
   WaktuTransaksi: text('Waktu Transaksi').notNull(), // Waktu Transaksi
-  Keterang: text('Keterang').notNull(), // Keterang
   createdAt: timestamp('created_at').defaultNow(), // Tanggal Dibuat
 });
 
@@ -87,24 +88,10 @@ export async function getReceipts(search: string, offset: number) {
       billSheets: 3,
       billAmount: '225000',
       adminFee: '2500',
-      totalBill: '227500',
+      totalBill: '22750',
       TotalTagihan: '227500',
       WaktuTransaksi: '2023-11-15',
-      Keterang: 'Pembayaran bulan November',         
-      description: 'Pembayaran bulan November',
-      createdAt: new Date('2023-11-15'),
-    },
-    {
-      status: 'active' as const,
-      customerId: "Cetak & Download",
-      customerName: 'Jane Smith',
-      billSheets: 3,
-      billAmount: '225000',
-      adminFee: '2500',
-      totalBill: '227500',
-      TotalTagihan: '227500',
-      WaktuTransaksi: '2023-11-15',
-      Keterang: 'Pembayaran bulan November',         
+      BL_TH: 10,         
       description: 'Pembayaran bulan November',
       createdAt: new Date('2023-11-15'),
     },

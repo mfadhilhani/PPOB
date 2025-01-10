@@ -76,13 +76,13 @@ export function Product2({ product2 }: { product2: SelectReceipts }) {
           {product2.status}
         </Badge>
       </TableCell>
-      <TableCell className="text-center">{product2.customerName}</TableCell>
       <TableCell className="text-center">{product2.billSheets}</TableCell>
+      <TableCell className="text-center">{product2.customerName}</TableCell>
       <TableCell className="text-center">{product2.billAmount}</TableCell>
+      <TableCell className="text-center">{product2.BL_TH}</TableCell>
       <TableCell className="text-center">{product2.adminFee}</TableCell>
       <TableCell className="text-center">{product2.totalBill}</TableCell>
       <TableCell className="text-center">{product2.TotalTagihan}</TableCell>
-      <TableCell className="text-center">{product2.WaktuTransaksi}</TableCell>
       <TableCell className="text-center">{product2.WaktuTransaksi}</TableCell>
       <TableCell className="text-center">{product2.description}</TableCell>
       <TableCell className="text-right">

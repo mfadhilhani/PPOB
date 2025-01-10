@@ -43,7 +43,7 @@ export default async function ProductsPage(
     totalBill: String(receipt.totalBill),
     TotalTagihan: String(receipt.TotalTagihan),
     WaktuTransaksi: String(receipt.WaktuTransaksi),
-    Keterang: String(receipt.Keterang),
+    BL_TH: String(receipt.BL_TH),
     description: receipt.description || null,
     createdAt: receipt.createdAt ? new Date(receipt.createdAt) : null,
 }));
