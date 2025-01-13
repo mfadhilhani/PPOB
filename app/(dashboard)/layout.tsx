@@ -8,7 +8,9 @@ import {
   Settings,
   ShoppingCart,
   Users2,
-  Zap
+  Zap,
+  Smartphone,
+  CreditCard
 } from 'lucide-react';
 
 import {
@@ -76,11 +78,11 @@ function DesktopNav() {
         </NavItem>
         
         <NavItem href="/Pulsa" label="Pulsa">
-          <Package className="h-5 w-5" />
+          <Smartphone className="h-5 w-5" />
         </NavItem>
 
         <NavItem href="/BPJS" label="BPJS">
-          <Users2 className="h-5 w-5" />
+          <CreditCard className="h-5 w-5" />
         </NavItem>
 
         
@@ -122,24 +124,24 @@ function MobileNav() {
             <span className="sr-only">Vercel</span>
           </Link>
           <Link
-            href="#"
+            href="/"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <Home className="h-5 w-5" />
+            <Zap className="h-5 w-5" />
             PLN
           </Link>
           <Link
-            href="#"
+            href="/Pulsa"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <ShoppingCart className="h-5 w-5" />
+            <Smartphone className="h-5 w-5" />
             Pulsa
           </Link>
           <Link
-            href="#"
+            href="/BPJS"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <ShoppingCart className="h-5 w-5" />
+            <CreditCard className="h-5 w-5" />
             BPJS
           </Link>
           
