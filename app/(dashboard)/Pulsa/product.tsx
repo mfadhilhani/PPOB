@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { SelectPLNBills } from '@/lib/dbpln';
-import { SelectReceipts } from '@/lib/dbpln';
+import { SelectPLNBills } from '@/lib/dbpulsa';
+import { SelectReceipts } from '@/lib/dbpulsa';
 import { deleteProduct } from './actions';
 import { deleteProduct2 } from './actions';
 import Link from 'next/link';

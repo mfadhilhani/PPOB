@@ -62,7 +62,7 @@ export function Product2({ product2 }: { product2: SelectReceipts }) {
   return (
     <TableRow>      
         <TableCell className="text-center">
-        <Link href={"./statuspln"}>
+        <Link href={"./statusbpjs"}>
         <Button className="bg-black hover:bg-gray-600 text-white" onClick={() => console.log(product2.customerId)} variant="ghost" size="sm">
   {product2.customerId}
 </Button>

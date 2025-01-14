@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ProductsTable, ProductsTable2 } from './products-table';
-import { getPLNBills, getReceipts, statusEnum } from '@/lib/dbpln';
+import { getPLNBills, getReceipts, statusEnum } from '@/lib/dbpulsa';
 
 export default async function ProductsPage(
   props: {

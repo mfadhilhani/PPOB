@@ -19,8 +19,8 @@ import {
 } from '@/components/ui/card';
 import { Product } from './product';
 import { Product2 } from './product';
-import { SelectPLNBills  } from '@/lib/dbpln';
-import { SelectReceipts } from '@/lib/dbpln';
+import { SelectPLNBills  } from '@/lib/dbpulsa';
+import { SelectReceipts } from '@/lib/dbpulsa';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -58,7 +58,7 @@ export function ProductsTable({ products }: { products: SelectPLNBills[] }) {
   return (
 <Card>
       <CardHeader>
-        <CardTitle>PLN</CardTitle>
+        <CardTitle>Pulsa</CardTitle>
         <CardDescription>
           Manage your products and view their sales performance.
         </CardDescription>
@@ -68,12 +68,12 @@ export function ProductsTable({ products }: { products: SelectPLNBills[] }) {
           <TableHeader>
             <TableRow>
            <TableHead className="text-center font-semibold">Status</TableHead>
-           <TableHead className="text-center font-semibold">ID Pelanggan</TableHead>
-           <TableHead className="text-center font-semibold">Nama Pelanggan</TableHead>
-           <TableHead className="text-center font-semibold">Lembar Tagihan</TableHead>
-           <TableHead className="text-center font-semibold">Nominal Tagihan</TableHead>
+           <TableHead className="text-center font-semibold">No HP</TableHead>
+           <TableHead className="text-center font-semibold">Operator</TableHead>
+           <TableHead className="text-center font-semibold">Nominal</TableHead>
            <TableHead className="text-center font-semibold">Biaya Admin</TableHead>
            <TableHead className="text-center font-semibold">Total Tagihan</TableHead>
+           <TableHead className="text-center font-semibold">Waktu Transaksi</TableHead>
            <TableHead className="text-center font-semibold">Keterangan</TableHead>
            <TableHead className="text-center font-semibold">Aksi</TableHead>
          </TableRow>
@@ -156,7 +156,7 @@ export function ProductsTable2 ({ products2 }: { products2: SelectReceipts[] }) 
   return (
 <Card>
       <CardHeader>
-        <CardTitle>PLN</CardTitle>
+        <CardTitle>Pulsa</CardTitle>
         <CardDescription>
           Manage your products and view their sales performance.
         </CardDescription>
